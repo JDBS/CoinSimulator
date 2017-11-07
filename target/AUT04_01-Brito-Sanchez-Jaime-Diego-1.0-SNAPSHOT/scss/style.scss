@@ -1,0 +1,117 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 07-nov-2017, 17:30:05
+    Author     : Jaime D. Brito Sánchez
+*/
+$background-color:#A0A0A0;
+$content-box-color:white;
+$coin-size:4em;
+$coin-margin-bottom:1.5em;
+
+%box{
+    border-style:solid;
+    border-radius: 5px;
+    box-shadow: 8px 8px 8px black;
+    padding:10px;
+    display:inline-block;
+    margin: 10px;
+}
+
+%coin{
+    border:none;
+    width:0;
+    visibility:hidden;
+    margin-bottom:$coin-margin-bottom;
+}
+%coin-before{
+    font-weight:bold;
+    font-size:$coin-size;
+    font-family: sans-serif;
+}
+
+body{
+    margin:0;
+    background-color:$background-color;
+}
+
+h1, h2, h3, h4{
+    margin-top:0;
+}
+
+.content-box{
+    @extend %box;
+    background-color:$content-box-color;
+}
+
+.form-box{
+    @extend .content-box;
+}
+
+.form-box fieldset{
+    border-style:solid;
+    border-width: 1px;
+    border-radius: 3px;
+}
+
+.coin-face{
+    @extend %coin;
+}
+.coin-face + label:before{
+    @extend %coin-before;
+    content:"o";
+}
+.coin-face:checked + label:before{
+    color:green;
+    text-shadow:3px 3px 3px black;
+}
+
+.coin-face:invalid + label:before{
+    color:darkred;
+    text-shadow:3px 3px 3px black;
+}
+
+.coin-face + label{
+    display:inline-block;
+}
+
+.coin-cross + label{
+        display:inline-block;
+}
+.coin-cross{
+    @extend %coin;
+}
+.coin-cross + label:before{
+    @extend %coin-before;
+    content:"x";
+}
+.coin-cross:checked + label:before{
+    color:green;
+    text-shadow:3px 3px 3px black;
+}
+
+.coin-cross:invalid + label:before{
+    color:darkred;
+    text-shadow:3px 3px 3px black;
+}
+
+a{
+    border: solid 1px black;
+    display:inline-block;
+    border-radius:3px;
+    padding:3px;
+    text-decoration:none;
+    color:black;
+    font-weight: bold;
+    background-color:lightgray;
+    box-shadow:1px 1px 1px black;
+}
+a:hover{
+    color:darkGray;
+}
+a:active{
+    box-shadow: 2px 2px black inset;
+}
