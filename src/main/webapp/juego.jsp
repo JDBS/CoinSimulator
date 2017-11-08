@@ -26,7 +26,8 @@
                     String strSide=request.getParameterValues("coin")[0];
                     userSide=Side.stringToSide(strSide);
                 }
-
+                
+                /* Cantidad introducida por el usuario */
                 double quantity = Double.MIN_VALUE;
                 if(request.getParameterValues("money")!=null){
                     String strMoney=request.getParameterValues("money")[0];
@@ -35,7 +36,7 @@
 
             %>
 
-            <%
+            <% /* Chequeo de errores en parámetros */
                 if(userSide!=null && quantity!=Double.MIN_VALUE){
             %>
                 <h1>Resultado</h1>
@@ -51,28 +52,34 @@
                         }
                     %>
                 </h2>
-                <h3>
+                
                     <%
                         if(side==userSide){
                     %>
-                        ¡Enhorabuena! ¡Has Ganado! Tu recompensa es de 
-                        <% out.println(quantity*2 + "€"); %>
+                        <img src="https://misionfortuna.files.wordpress.com/2013/11/dinero.jpg"/>
+                        <h3>
+                            ¡Enhorabuena! ¡Has Ganado! Tu recompensa es de 
+                            <% out.println(quantity*2 + "€"); %>
+                        </h3>
                     <%
                         }else{
                     %>
-                        ¡Vaya! ¡Has Perdido!
+                        <img src="http://slowinver.com/wp-content/uploads/2014/11/arruinado-en-inversiones.jpg"/>
+                        <h3>
+                            ¡Vaya! ¡Has Perdido!
+                        </h3>
                     <%
                         }
                     %>
-                </h3>
+                
             <%
-                }else{
-            %>
+                }else{ /* Mensaje de error */
+            %> 
                 <em>Los parámetros no han sido introducidos de forma correcta.</em2>
             <%
                 }
             %>
-            <%
+            <% /* Link de retorno */
                 String link="\""+request.getContextPath()+"/"+"index_juego.html"+"\"";
             %>
             <a href=<% out.print(link); %> >Volver</a>
